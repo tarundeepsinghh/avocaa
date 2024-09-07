@@ -30,22 +30,34 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      # Add pnpm setup step
+      - name: Set up pnpm
+        run: |
+          npm install -g pnpm
+
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: "npm"
+          cache: "pnpm" # Ensure you're caching using pnpm
+
+      # Use the correct pnpm install command
       - name: Install dependencies
-        run: pnpm ci
+        run: pnpm install --frozen-lockfile
+
       - name: Build
         run: pnpm run build
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload dist folder
           path: "./dist"
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
