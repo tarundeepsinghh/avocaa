@@ -96,9 +96,9 @@ function AppRouter() {
         </Route>
         <Route path='*' element={<NotFoundPage />} />
       </>
-    )
+    ),
+    { basename: "/avocaa" }
   );
-
   return <RouterProvider router={router} />;
 }
 
