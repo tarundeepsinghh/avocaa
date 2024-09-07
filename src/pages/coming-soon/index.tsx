@@ -1,7 +1,24 @@
+import { Box, Typography, useTheme } from "@mui/material";
 import { isRouteErrorResponse, useRouteError } from "react-router-dom";
 
 export function ComingSoon() {
-  return <></>;
+  const theme = useTheme();
+  return (
+    <Box
+      sx={{
+        height: "100vh",
+        width: "100vw",
+        backgroundColor: theme.palette.background.default,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        color: theme.palette.primary.main,
+      }}>
+      <Typography variant='h1'>Avocaa</Typography>
+      <Typography variant='h1'>Coming Soon</Typography>
+    </Box>
+  );
 }
 
 // If you want to customize the Component display name in React dev tools:
