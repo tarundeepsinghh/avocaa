@@ -31,7 +31,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Add pnpm setup step
       - name: Set up pnpm
         run: |
           npm install -g pnpm
@@ -40,9 +39,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: "pnpm" # Ensure you're caching using pnpm
+          cache: "pnpm"
 
-      # Use the correct pnpm install command
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 

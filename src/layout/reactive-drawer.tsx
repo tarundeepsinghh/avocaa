@@ -1,8 +1,62 @@
-import { Drawer } from "@mui/material";
+import {
+  Drawer,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Typography,
+} from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { AppSelectors, toggleMenu } from "../store/appSlice";
+import NavItems from "./nav-items";
+import { useNavigate } from "react-router-dom";
+
+const SideNavMenuItem = ({
+  onClick,
+  icon,
+  title,
+}: {
+  index: number;
+  onClick: () => void;
+  activeIcon?: string;
+  icon: React.ReactNode;
+  label: string;
+  title: string;
+}) => {
+  return (
+    <ListItem
+      sx={{
+        borderRadius: "12px",
+        padding: "5px 0 5px 0",
+      }}>
+      <ListItemButton
+        disableTouchRipple
+        sx={{
+          "&.MuiButtonBase-root:hover": {
+            bgcolor: "transparent",
+          },
+        }}
+        onClick={onClick}>
+        <ListItemIcon sx={{ minWidth: "30px", marginRight: "7px" }}>
+          {icon}
+        </ListItemIcon>
+        <ListItemText>
+          <Typography
+            sx={{
+              color: "#B44E43",
+              fontSize: "16px",
+              fontWeight: "400",
+            }}>
+            {title}
+          </Typography>
+        </ListItemText>
+      </ListItemButton>
+    </ListItem>
+  );
+};
 
 export function ReactiveDrawer() {
+  const navigate = useNavigate();
   const isMenuOpen = useSelector(AppSelectors.selectIsMenuOpen);
   const dispatch = useDispatch();
   return (
@@ -16,7 +70,27 @@ export function ReactiveDrawer() {
           width: "250px",
           background: "#BBC163",
           borderCollapse: "collapse",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
         },
-      }}></Drawer>
+      }}>
+      <Typography sx={{ color: "#fff", fontSize: "20px", marginY: "1.5rem" }}>
+        Menu
+      </Typography>
+      {NavItems.map(({ label, title, path, icon }, index) => (
+        <SideNavMenuItem
+          key={index}
+          index={index}
+          onClick={() => {
+            navigate(path);
+            dispatch(toggleMenu());
+          }}
+          icon={icon}
+          label={label}
+          title={title}
+        />
+      ))}
+    </Drawer>
   );
 }

@@ -22,6 +22,24 @@ function AppRouter() {
       default: module.HealthBenefitsComponent,
     }))
   );
+
+  const DishesPage = lazy(() =>
+    import("./pages/dishes").then((module) => ({
+      default: module.DishesComponent,
+    }))
+  );
+
+  const BoxesPage = lazy(() =>
+    import("./pages/boxes").then((module) => ({
+      default: module.Component,
+    }))
+  );
+
+  const InternationalServingPage = lazy(() =>
+    import("./pages/international-serving").then((module) => ({
+      default: module.IntroComponent,
+    }))
+  );
   const ComingSoonPage = lazy(() =>
     import("./pages/coming-soon").then((module) => ({
       default: module.ComingSoon,
@@ -33,7 +51,7 @@ function AppRouter() {
       <>
         {/* <Route path='/' element={<Navigate to='/coming-soon' replace />} /> */}
         {/* //temp */}
-        <Route path='/' element={<Navigate to='/landing' replace />} />
+        <Route path='/' element={<Navigate to='/dashboard' replace />} />
         {/* maybe landing not loading issues is because if this commented out then it will load */}
         <Route
           path='coming-soon'
@@ -57,7 +75,7 @@ function AppRouter() {
         />
         <Route path='/' element={<DashboardLayout />}>
           <Route
-            path='landing'
+            path='dashboard'
             element={
               <Suspense
                 fallback={
@@ -93,6 +111,66 @@ function AppRouter() {
                   </Box>
                 }>
                 <HealthBenefitPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path='/dishes'
+            element={
+              <Suspense
+                fallback={
+                  <Box
+                    display='flex'
+                    justifyContent='center'
+                    alignItems='center'
+                    style={{ height: "100vh" }}>
+                    <Box textAlign='center'>
+                      <CircularProgress title='progress loader' />
+                      <p>Loading...</p>
+                    </Box>
+                  </Box>
+                }>
+                <DishesPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path='/boxes'
+            element={
+              <Suspense
+                fallback={
+                  <Box
+                    display='flex'
+                    justifyContent='center'
+                    alignItems='center'
+                    style={{ height: "100vh" }}>
+                    <Box textAlign='center'>
+                      <CircularProgress title='progress loader' />
+                      <p>Loading...</p>
+                    </Box>
+                  </Box>
+                }>
+                <BoxesPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path='/international-serving'
+            element={
+              <Suspense
+                fallback={
+                  <Box
+                    display='flex'
+                    justifyContent='center'
+                    alignItems='center'
+                    style={{ height: "100vh" }}>
+                    <Box textAlign='center'>
+                      <CircularProgress title='progress loader' />
+                      <p>Loading...</p>
+                    </Box>
+                  </Box>
+                }>
+                <InternationalServingPage />
               </Suspense>
             }
           />
