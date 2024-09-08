@@ -1,8 +1,10 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { isRouteErrorResponse, useRouteError } from "react-router-dom";
 
 export function ComingSoon() {
   const theme = useTheme();
+  const isMd = useMediaQuery(theme.breakpoints.down("md"));
+
   return (
     <Box
       sx={{
@@ -16,7 +18,7 @@ export function ComingSoon() {
         color: theme.palette.primary.main,
       }}>
       <Typography variant='h1'>Avocaa</Typography>
-      <Typography variant='h1'>Coming Soon</Typography>
+      <Typography variant={isMd ? "h3" : "h1"}>Coming Soon</Typography>
     </Box>
   );
 }
