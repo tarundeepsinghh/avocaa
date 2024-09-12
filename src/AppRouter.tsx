@@ -1,15 +1,14 @@
+import { Box, CircularProgress } from "@mui/material";
+import { lazy, Suspense } from "react";
 import {
-  createBrowserRouter,
+  createHashRouter,
   createRoutesFromElements,
-  HashRouter,
   Navigate,
   Route,
   RouterProvider,
 } from "react-router-dom";
-import NotFoundPage from "./pages/not-found";
-import { lazy, Suspense } from "react";
-import { Box, CircularProgress } from "@mui/material";
 import { DashboardLayout } from "./layout/dashboard";
+import NotFoundPage from "./pages/not-found";
 
 function AppRouter() {
   const LandingPage = lazy(() =>
@@ -46,7 +45,7 @@ function AppRouter() {
       default: module.ComingSoon,
     }))
   );
-  const router = createBrowserRouter(
+  const router = createHashRouter(
     createRoutesFromElements(
       <>
         <Route path='/' element={<Navigate to='/coming-soon' replace />} />
@@ -179,11 +178,7 @@ function AppRouter() {
       </>
     )
   );
-  return (
-    <HashRouter>
-      <RouterProvider router={router} />;
-    </HashRouter>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default AppRouter;
