@@ -18,7 +18,7 @@ export const AppTheme = createTheme({
       main: "#BBC163",
     },
     background: {
-      default: "#FAFADE",
+      default: "#fbfbe0",
     },
   },
 });

@@ -1,21 +1,44 @@
-import { styled } from "@mui/material";
+import {
+  Box,
+  styled,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import { Link } from "react-router-dom";
 
 const StyledLink = styled(Link)(({ theme }) => ({
-  color: theme.palette.primary.main,
+  backgroundColor: theme.palette.primary.main,
   textDecoration: "none",
-  marginRight: theme.spacing(2),
-  "&:hover": {
-    textDecoration: "underline",
+  padding: theme.spacing(1.5),
+  borderRadius: "12px",
+  color: "white",
+  "&:active": {
+    color: theme.palette.primary.main,
+    backgroundColor: "white",
   },
 }));
 
-const NotFoundPage = () => (
-  <div style={{ textAlign: "center", paddingTop: "60px" }}>
-    <h1>Page Not Found</h1>
-    <br />
-    <StyledLink to='/'>Go Back</StyledLink>
-  </div>
-);
+const NotFoundPage = () => {
+  const theme = useTheme();
+  const isMd = useMediaQuery(theme.breakpoints.down("md"));
+  return (
+    <Box
+      sx={{
+        height: "100vh",
+        width: "100vw",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: theme.palette.background.default,
+      }}>
+      <Typography variant={isMd ? "h4" : "h1"}>404</Typography>
+      <Typography variant={isMd ? "h4" : "h1"}>Page Not Found</Typography>
+      <br />
+      <StyledLink to='/'>Go Back</StyledLink>
+    </Box>
+  );
+};
 
 export default NotFoundPage;

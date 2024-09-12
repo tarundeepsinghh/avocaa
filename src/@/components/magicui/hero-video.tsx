@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { Play, XIcon } from "lucide-react";
 import { cn } from "@/@/lib/utils";
+import { Box, useTheme } from "@mui/material";
+import { AnimatePresence, motion } from "framer-motion";
+import { Play } from "lucide-react";
+import { useState } from "react";
 
 type AnimationStyle =
   | "from-bottom"
@@ -75,6 +76,7 @@ export default function HeroVideoDialog({
 }: HeroVideoProps) {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
   const selectedAnimation = animationVariants[animationStyle];
+  const theme = useTheme();
 
   return (
     <div className={cn("relative", className)}>
@@ -82,7 +84,7 @@ export default function HeroVideoDialog({
         className='relative cursor-pointer group'
         onClick={() => setIsVideoOpen(true)}>
         <img
-          src={thumbnailSrc}
+          src={`https://img.youtube.com/vi/${thumbnailSrc}/0.jpg`}
           alt={thumbnailAlt}
           width={1920}
           height={1080}
@@ -115,16 +117,16 @@ export default function HeroVideoDialog({
               {...selectedAnimation}
               transition={{ type: "spring", damping: 30, stiffness: 300 }}
               className='relative w-full max-w-4xl aspect-video mx-4 md:mx-0'>
-              <motion.button className='absolute -top-16 right-0 text-white text-xl bg-neutral-900/50 ring-1 backdrop-blur-md rounded-full p-2 dark:bg-neutral-100/50 dark:text-black'>
-                <XIcon className='size-5' />
-              </motion.button>
-              <div className='size-full border-2 border-white rounded-2xl overflow-hidden isolate z-[1] relative'>
+              <Box
+                sx={{ zIndex: theme.zIndex.tooltip, background: "black" }}
+                className='size-full border-2 border-white rounded-2xl overflow-hidden isolate relative'>
                 <iframe
                   src={videoSrc}
                   className='size-full rounded-2xl'
+                  title={thumbnailAlt}
                   allowFullScreen
                   allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'></iframe>
-              </div>
+              </Box>
             </motion.div>
           </motion.div>
         )}

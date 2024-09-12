@@ -1,6 +1,7 @@
 import {
   createBrowserRouter,
   createRoutesFromElements,
+  HashRouter,
   Navigate,
   Route,
   RouterProvider,
@@ -45,7 +46,6 @@ function AppRouter() {
       default: module.ComingSoon,
     }))
   );
-
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
@@ -179,7 +179,11 @@ function AppRouter() {
       </>
     )
   );
-  return <RouterProvider router={router} />;
+  return (
+    <HashRouter>
+      <RouterProvider router={router} />;
+    </HashRouter>
+  );
 }
 
 export default AppRouter;

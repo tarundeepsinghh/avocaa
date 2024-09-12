@@ -14,7 +14,10 @@ export function HealthBenefitsComponent({ landing = false }) {
     <Grid2
       container
       spacing={2}
-      sx={{ margin: landing ? "0 2rem" : "2rem", alignItems: "center" }}>
+      sx={{
+        margin: landing ? "0 2rem" : "2rem",
+        alignItems: "center",
+      }}>
       <Grid2
         size={{
           xs: 12,

@@ -3,18 +3,18 @@ import HeroVideoDialog from "@/@/components/magicui/hero-video";
 export default function VideoComponent({
   yt,
   title,
+  thumbnailSrc,
 }: {
   yt: string;
   title: string;
+  thumbnailSrc: string;
 }) {
   return (
-    <div className='relative'>
-      <HeroVideoDialog
-        animationStyle='top-in-bottom-out'
-        videoSrc={yt}
-        thumbnailSrc={yt}
-        thumbnailAlt={title}
-      />
-    </div>
+    <HeroVideoDialog
+      animationStyle='top-in-bottom-out'
+      videoSrc={yt}
+      thumbnailSrc={thumbnailSrc}
+      thumbnailAlt={title}
+    />
   );
 }

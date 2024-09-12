@@ -6,15 +6,17 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import { isRouteErrorResponse, useRouteError } from "react-router-dom";
-import designRight from "../../assets/design-right.jpg";
-import designLeft from "../../assets/design.png";
-import detailedLogo from "../../assets/mainlogo.png";
-import OmPng from "../../assets/om.png";
-import SubwayPng from "../../assets/subway.png";
-import toastPng from "../../assets/toast.png";
-import juicePng from "../../assets/juice.png";
 import { useEffect } from "react";
+import { isRouteErrorResponse, useRouteError } from "react-router-dom";
+import designLeft from "../../assets/design-right.svg";
+import designRightDesign from "../../assets/design-left.svg";
+import juicePng from "../../assets/juice.png";
+import detailedLogoSvg from "../../assets/mainlogo.svg";
+import detailedLogoSm from "../../assets/logo.svg";
+import OmPng from "../../assets/om.png";
+import SubwaySvg from "../../assets/subway.svg";
+import toastSvg from "../../assets/toast.svg";
+// import leafSvg from "../../assets/leaf-left.svg";
 
 export function IntroComponent() {
   const theme = useTheme();
@@ -27,7 +29,13 @@ export function IntroComponent() {
   }, [issmUp]);
 
   return (
-    <Box sx={{ width: "100%", height: "100vh" }}>
+    <Box
+      sx={{
+        width: "100%",
+        height: "100vh",
+        position: "relative",
+        overflow: "hidden",
+      }}>
       <Box
         sx={{
           display: "flex",
@@ -42,15 +50,18 @@ export function IntroComponent() {
           <img
             src={designLeft}
             alt='design'
-            style={{ width: "25vw", background: "transparent" }}
+            style={{
+              width: ismdUp ? "30vw" : "15vw",
+              background: "transparent",
+              transform: "scaleX(-1)",
+            }}
           />
           {!ismdUp && (
             <img
-              src={toastPng}
+              src={toastSvg}
               alt='avocaa toast'
               style={{
                 width: "17vw",
-                background: "transparent",
               }}
             />
           )}
@@ -63,7 +74,7 @@ export function IntroComponent() {
           }}>
           {!ismdUp && (
             <img
-              src={SubwayPng}
+              src={SubwaySvg}
               alt='subway'
               style={{
                 width: "17vw",
@@ -72,17 +83,36 @@ export function IntroComponent() {
               }}
             />
           )}
-          <img
-            src={designRight}
-            alt='design'
-            style={{ width: "15vw", background: "transparent" }}
-          />
+          <Box
+            sx={{
+              zIndex: 0,
+            }}>
+            <img
+              src={designRightDesign}
+              alt='design'
+              style={{
+                width: ismdUp ? "30vw" : "15vw",
+                background: "transparent",
+                transform: "scaleX(-1)",
+                left: "0",
+              }}
+            />
+          </Box>
         </Box>
       </Box>
       <Grid2
         container
         spacing={2}
-        sx={{ margin: "0 2rem", alignItems: "center" }}>
+        sx={{
+          margin: {
+            xs: "-5rem 0 0 0",
+            sm: "-5rem 0 0 0",
+            md: "-5rem 0 0 0",
+            lg: "-22.5rem 0 0 0",
+            xl: "-22.5rem 0 0 0",
+          },
+          alignItems: "center",
+        }}>
         {!ismdUp && (
           <Grid2 size={{ xs: 12, sm: 12, md: 3.5, lg: 3.5, xl: 3.5 }}>
             <img src={OmPng} alt='om' style={{ width: "100%" }} />
@@ -91,23 +121,52 @@ export function IntroComponent() {
         <Grid2
           size={{ xs: 12, sm: 12, md: 5, lg: 5, xl: 5 }}
           sx={{ textAlign: "center" }}>
-          <img src={detailedLogo} alt='logo' style={{ width: "100%" }} />
-          <Typography
-            sx={{
-              fontFamily: "Roboto",
-              fontSize: "2rem",
-              textTransform: "capitalize",
-            }}>
-            the epitome of avocado excellence
-          </Typography>
-          <Divider
-            sx={{ margin: "1rem 0", backgroundColor: "#BBC163", height: "4px" }}
-          />
+          {ismdUp ? (
+            <Box>
+              <img src={detailedLogoSm} alt='logo' style={{ width: "100%" }} />
+              <Typography
+                sx={{
+                  fontFamily: "Roboto",
+                  fontSize: "1em",
+                  textTransform: "capitalize",
+                  marginTop: "-3rem",
+                }}>
+                the epitome of avocado excellence
+              </Typography>
+              <Divider
+                sx={{
+                  margin: "1rem 0",
+                  backgroundColor: "#BBC163",
+                  height: "4px",
+                }}
+              />
+            </Box>
+          ) : (
+            <img
+              src={detailedLogoSvg}
+              alt='logo'
+              style={{
+                width: "100%",
+                transform: "rotate(90deg)",
+              }}
+            />
+          )}
         </Grid2>
         {!ismdUp && (
-          <Grid2 size={{ xs: 12, sm: 12, md: 3.5, lg: 3.5, xl: 3.5 }}>
-            <img src={juicePng} alt='juice' />
-          </Grid2>
+          <>
+            <Grid2 size={{ xs: 12, sm: 12, md: 3.5, lg: 3.5, xl: 3.5 }}>
+              <img src={juicePng} alt='juice' />
+              {/* <img
+                src={leafSvg}
+                alt='leaf'
+                style={{
+                  width: ismdUp ? "30vw" : "15vw",
+                  background: "transparent",
+                  transform: "scaleX(-1)",
+                }}
+              /> */}
+            </Grid2>
+          </>
         )}
       </Grid2>
     </Box>

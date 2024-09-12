@@ -10,7 +10,7 @@ export function Component() {
       <Box>
         <IntroComponent />
       </Box>
-      <Box sx={{ marginTop: "2rem" }}>
+      <Box sx={{ marginTop: "5rem" }}>
         <HealthBenefitsComponent landing />
       </Box>
       <Box sx={{ marginTop: "5rem" }}>
