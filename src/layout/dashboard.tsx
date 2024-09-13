@@ -9,6 +9,7 @@ import { Outlet } from "react-router-dom";
 export function DashboardLayout() {
   const theme = useTheme();
   const dispatch = useDispatch();
+
   return (
     <Box
       sx={{
@@ -16,6 +17,7 @@ export function DashboardLayout() {
         width: "100vw",
         boxShadow: "none",
         overflowX: "auto",
+        overflowY: "scroll",
         backgroundColor: theme.palette.background.default,
       }}>
       <AppBar
@@ -45,6 +47,7 @@ export function DashboardLayout() {
               display: "flex",
               justifyContent: "center",
               height: "100%",
+              color: "#000",
             }}>
             {/* <img src={logo} alt='logo' style={{ height: "90%" }} /> */}
           </Box>

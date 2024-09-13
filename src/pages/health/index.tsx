@@ -17,6 +17,7 @@ export function HealthBenefitsComponent({ landing = false }) {
       sx={{
         margin: landing ? "0 2rem" : "2rem",
         alignItems: "center",
+        backgroundColor: "transparent",
       }}>
       <Grid2
         size={{

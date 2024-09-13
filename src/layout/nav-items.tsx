@@ -19,7 +19,7 @@ const NavItems = [
   },
   {
     label: "dishes",
-    title: "Dishes",
+    title: "Recipes",
     path: "/dishes",
     icon: <SoupKitchenRoundedIcon />,
   },

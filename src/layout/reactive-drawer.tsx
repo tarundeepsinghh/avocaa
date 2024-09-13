@@ -85,6 +85,11 @@ export function ReactiveDrawer() {
           onClick={() => {
             navigate(path);
             dispatch(toggleMenu());
+            window.scrollTo({
+              top: 0,
+              left: 0,
+              behavior: "smooth",
+            });
           }}
           icon={icon}
           label={label}
