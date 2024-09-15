@@ -31,7 +31,7 @@ function AppRouter() {
 
   const BoxesPage = lazy(() =>
     import("./pages/boxes").then((module) => ({
-      default: module.Component,
+      default: module.BoxComponent,
     }))
   );
 

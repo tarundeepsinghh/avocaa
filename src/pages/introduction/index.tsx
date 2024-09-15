@@ -12,6 +12,7 @@ import toastSvg from "../../assets/toast.svg";
 // import front from "../../assets/front45.svg";
 // import leafSvg from "../../assets/leaf-left.svg";
 import tempSvg from "../../assets/1.svg";
+import sushiSvg from "../../assets/sushi.svg";
 
 export function IntroComponent() {
   const theme = useTheme();
@@ -56,6 +57,9 @@ export function IntroComponent() {
                 }}
               />
             </Box>
+            <Box>
+              <img src={sushiSvg} alt='sushi' style={{ width: "17vw" }} />
+            </Box>
             <Box
               sx={{
                 display: "flex",
@@ -93,7 +97,7 @@ export function IntroComponent() {
             spacing={2}
             sx={{
               margin: {
-                lg: "-22.5rem 0 0 0",
+                lg: "-18.5rem 0 0 0",
                 xl: "-22.5rem 0 0 0",
               },
               alignItems: "center",
