@@ -5,6 +5,8 @@ import Fourboxes from "../../assets/4.png";
 import backgroundCard from "../../assets/bg_box.svg";
 import { PriceComponent } from "./box.component";
 import { list } from "./list";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import InstagramIcon from "@mui/icons-material/Instagram";
 
 export function BoxComponent() {
   const theme = useTheme();
@@ -85,6 +87,31 @@ export function BoxComponent() {
           <PriceComponent {...list[1]} />
         </Grid2>
       )}
+      <Grid2
+        size={{ xs: 12, sm: 12, md: 12, lg: 12, xl: 12 }}
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          marginTop: "2rem",
+          gap: "1rem",
+        }}>
+        <WhatsAppIcon
+          sx={{ color: "#25D366", fontSize: "4rem", cursor: "pointer" }}
+          href='https://wa.me/918130352989'
+        />
+        <InstagramIcon
+          sx={{
+            fontSize: "4rem",
+            cursor: "pointer",
+            background:
+              "radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%)",
+            borderRadius: "15px",
+            color: "#fff",
+          }}
+          href='https://www.instagram.com/weavocaa?igsh=MWFkdGMxMTVkNGt1Ng=='
+        />
+      </Grid2>
     </Grid2>
   );
 }
