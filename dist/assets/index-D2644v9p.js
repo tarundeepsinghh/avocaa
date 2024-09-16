@@ -1,0 +1,1 @@
+import{j as n,b as e,i as o}from"./index-CkPYImpm.js";function t(){return n.jsx(n.Fragment,{})}t.displayName="LandingPage";function a(){const r=e();if(o(r))return n.jsxs("h1",{children:[r.status," ",r.statusText]});const s=r instanceof Error?r.message:"Unknown error";return n.jsx("h1",{children:s})}a.displayName="LandingErrorBoundary";export{t as Component,a as ErrorBoundary};

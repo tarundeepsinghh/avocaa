@@ -1,11 +1,8 @@
 import { FadeText } from "@/@/components/magicui/fade-text";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-import { Divider, Grid2, useMediaQuery, useTheme } from "@mui/material";
+import { Grid2, useMediaQuery, useTheme } from "@mui/material";
 import { isRouteErrorResponse, Link, useRouteError } from "react-router-dom";
 import Twoboxes from "../../assets/2.png";
 import Fourboxes from "../../assets/4.png";
-import backgroundCard from "../../assets/bg_box.svg";
 import { PriceComponent } from "./box.component";
 import { list } from "./list";
 
@@ -19,9 +16,6 @@ export function BoxComponent() {
         <Link to={`https://wa.me/+918130352989?text=${list[0].link}`}>
           <div
             style={{
-              background: `url(${backgroundCard})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
@@ -79,9 +73,6 @@ export function BoxComponent() {
             style={{
               width: "100%",
               height: ismdUp ? "150%" : "100%",
-              background: `url(src/assets/bg_box.svg)`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
@@ -102,46 +93,6 @@ export function BoxComponent() {
           <PriceComponent {...list[1]} />
         </Grid2>
       )}
-      <Grid2
-        size={{ xs: 12 }}
-        sx={{
-          marginTop: "2rem",
-          marginBottom: "1rem",
-        }}>
-        <Divider
-          sx={{
-            backgroundColor: "#BBC163",
-            height: "4px",
-          }}
-          variant='middle'
-        />
-      </Grid2>
-      <Grid2 size={{ xs: 2 }}></Grid2>
-      <Grid2
-        size={{ xs: 8 }}
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          gap: "1rem",
-        }}>
-        <WhatsAppIcon
-          sx={{ color: "#25D366", fontSize: "4rem", cursor: "pointer" }}
-          href='https://wa.me/918130352989'
-        />
-        <InstagramIcon
-          sx={{
-            fontSize: "3.8rem",
-            cursor: "pointer",
-            background:
-              "radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%)",
-            borderRadius: "15px",
-            color: "#fff",
-          }}
-          href='https://www.instagram.com/weavocaa?igsh=MWFkdGMxMTVkNGt1Ng=='
-        />
-      </Grid2>
-      <Grid2 size={{ xs: 2 }}></Grid2>
     </Grid2>
   );
 }

@@ -10,7 +10,7 @@ export const list = [
   {
     title: "Box of 4",
     discription:
-      "Get four premium, organic avocados bursting with flavor andnutrients. Ideal for families or avocado lovers, thesesustainably grown avocados are perfect for guacamole, salads,and more.",
+      "Get four premium, organic avocados bursting with flavor and nutrients. Ideal for families or avocado lovers, these sustainably grown avocados are perfect for guacamole, salads and more.",
     price: "945",
     discounted: "885",
     link: "box+of+4",

@@ -53,10 +53,11 @@ function AppRouter() {
   const router = createHashRouter(
     createRoutesFromElements(
       <>
-        <Route path='/' element={<Navigate to='/coming-soon' replace />} />
-        {/* //temp */}
-        {/* <Route path='/' element={<Navigate to='/dashboard' replace />} /> */}
-        {/* maybe landing not loading issues is because if this commented out then it will load */}
+        <Route
+          path='/coming-soon'
+          element={<Navigate to='/dashboard' replace />}
+        />
+        <Route path='/' element={<Navigate to='/dashboard' replace />} />
         <Route
           path='coming-soon'
           element={
