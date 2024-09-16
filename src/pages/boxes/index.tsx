@@ -5,7 +5,7 @@ import { Divider, Grid2, useMediaQuery, useTheme } from "@mui/material";
 import { isRouteErrorResponse, Link, useRouteError } from "react-router-dom";
 import Twoboxes from "../../assets/2.png";
 import Fourboxes from "../../assets/4.png";
-import backgroundCard from "src/assets/bg_box.svg";
+import backgroundCard from "../../assets/bg_box.svg";
 import { PriceComponent } from "./box.component";
 import { list } from "./list";
 
