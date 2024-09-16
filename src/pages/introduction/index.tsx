@@ -4,13 +4,9 @@ import designRightDesign from "../../assets/design-left.svg";
 import designLeft from "../../assets/design-right.svg";
 import juicePng from "../../assets/juice.png";
 import detailedLogoSvg from "../../assets/mainlogo.svg";
-// import logoSm from "../../assets/logo.svg";
 import OmPng from "../../assets/om.png";
 import SubwaySvg from "../../assets/subway.svg";
 import toastSvg from "../../assets/toast.svg";
-// import back from "../../assets/back.svg";
-// import front from "../../assets/front45.svg";
-// import leafSvg from "../../assets/leaf-left.svg";
 import tempSvg from "../../assets/1.svg";
 import sushiSvg from "../../assets/sushi.svg";
 

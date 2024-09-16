@@ -4,6 +4,7 @@ import { DishesComponent } from "../dishes";
 import { HealthBenefitsComponent } from "../health";
 import { IntroComponent } from "../introduction";
 import { BoxComponent } from "../boxes";
+import designRightDesign from "../../assets/design-left.svg";
 import { useTheme } from "@mui/material";
 
 export function Component() {
@@ -11,7 +12,7 @@ export function Component() {
   const ismdUp = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
-    <Box sx={{ marginBottom: "3rem" }}>
+    <Box>
       <IntroComponent />
       <Box sx={{ marginTop: ismdUp ? "1rem" : "2rem" }}>
         <HealthBenefitsComponent landing />
@@ -22,6 +23,19 @@ export function Component() {
       <Box sx={{ marginTop: "5rem" }}>
         <BoxComponent />
       </Box>
+      {!ismdUp && (
+        <img
+          src={designRightDesign}
+          alt='design'
+          style={{
+            width: "15vw",
+            background: "transparent",
+            transform: "scaleY(-1)",
+            marginTop: "-10rem",
+            // marginBottom: "3rem",
+          }}
+        />
+      )}
     </Box>
   );
 }

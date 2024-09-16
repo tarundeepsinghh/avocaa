@@ -1,9 +1,10 @@
 import { FadeText } from "@/@/components/magicui/fade-text";
 import { SubTitleHeader, TitleHeader } from "@/components/TitleHeader";
 import VideoComponent from "@/components/VideoComponent";
-import { Grid2 } from "@mui/material";
+import { Box, Grid2 } from "@mui/material";
 import { isRouteErrorResponse, useRouteError } from "react-router-dom";
 import { Dishes } from "./dishes";
+import crate from "../../assets/4.svg";
 
 export function DishesComponent({ landing = false }) {
   return (
@@ -12,13 +13,20 @@ export function DishesComponent({ landing = false }) {
         container
         spacing={2}
         sx={{ margin: landing ? "2rem" : "0 2rem", alignItems: "center" }}>
-        <Grid2 size={{ xs: 12 }} sx={{ textAlign: "right" }}>
+        <Grid2
+          size={{ xs: 12 }}
+          sx={{ display: "flex", justifyContent: "flex-end" }}>
           <FadeText
             direction='right'
             framerProps={{
               show: { transition: { delay: 0.2 } },
             }}
-            text={<TitleHeader>Recipes</TitleHeader>}
+            text={
+              <Box sx={{ display: "flex", alignItems: "center" }}>
+                <img src={crate} alt='design' style={{ width: "20vw" }} />
+                <TitleHeader>Recipes</TitleHeader>
+              </Box>
+            }
           />
         </Grid2>
       </Grid2>

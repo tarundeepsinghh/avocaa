@@ -1,12 +1,13 @@
-import { Box, Grid2, useMediaQuery, useTheme } from "@mui/material";
-import { isRouteErrorResponse, useRouteError } from "react-router-dom";
+import { FadeText } from "@/@/components/magicui/fade-text";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import { Divider, Grid2, useMediaQuery, useTheme } from "@mui/material";
+import { isRouteErrorResponse, Link, useRouteError } from "react-router-dom";
 import Twoboxes from "../../assets/2.png";
 import Fourboxes from "../../assets/4.png";
 import backgroundCard from "../../assets/bg_box.svg";
 import { PriceComponent } from "./box.component";
 import { list } from "./list";
-import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-import InstagramIcon from "@mui/icons-material/Instagram";
 
 export function BoxComponent() {
   const theme = useTheme();
@@ -15,17 +16,19 @@ export function BoxComponent() {
   return (
     <Grid2 container spacing={2}>
       <Grid2 size={{ xs: 12, sm: 12, md: 12, lg: 4, xl: 4 }}>
-        <Box
-          sx={{
-            background: `url(${backgroundCard})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}>
-          <img src={Twoboxes} alt='two boxes' />
-        </Box>
+        <Link to={`https://wa.me/+918130352989?text=${list[0].link}`}>
+          <div
+            style={{
+              background: `url(${backgroundCard})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}>
+            <img src={Twoboxes} alt='two boxes' />
+          </div>
+        </Link>
       </Grid2>
       {ismdUp && (
         <Grid2 size={{ xs: 12, sm: 12, md: 12 }}>
@@ -43,44 +46,56 @@ export function BoxComponent() {
               justifyContent: "center",
               alignItems: "center",
             }}>
-            {list.map(({ title, discription, price, discounted, link }) => (
-              <Grid2
-                size={{
-                  xs: 0,
-                  sm: 0,
-                  md: 0,
-                  lg: 6,
-                  xl: 6,
-                }}>
-                <PriceComponent
-                  {...{ title, discription, price, discounted, link }}
-                />
-              </Grid2>
-            ))}
+            {list.map(
+              ({ title, discription, price, discounted, link }, index) => (
+                <Grid2
+                  size={{
+                    xs: 0,
+                    sm: 0,
+                    md: 0,
+                    lg: 6,
+                    xl: 6,
+                  }}>
+                  <FadeText
+                    direction={index % 2 === 0 ? "left" : "right"}
+                    framerProps={{
+                      show: { transition: { delay: 0.2 } },
+                    }}
+                    text={
+                      <PriceComponent
+                        {...{ title, discription, price, discounted, link }}
+                      />
+                    }
+                  />
+                </Grid2>
+              )
+            )}
           </Grid2>
         )}
       </Grid2>
       <Grid2 size={{ xs: 12, sm: 12, md: 12, lg: 4, xl: 4 }}>
-        <Box
-          sx={{
-            width: "100%",
-            height: ismdUp ? "150%" : "100%",
-            background: `url(${backgroundCard})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}>
-          <img
-            src={Fourboxes}
+        <Link to={`https://wa.me/+918130352989?text=${list[1].link}`}>
+          <div
             style={{
-              width: ismdUp ? "80%" : "70%",
-              height: ismdUp ? "80%" : "50%",
-            }}
-            alt='four boxes'
-          />
-        </Box>
+              width: "100%",
+              height: ismdUp ? "150%" : "100%",
+              background: `url(${backgroundCard})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}>
+            <img
+              src={Fourboxes}
+              style={{
+                width: ismdUp ? "80%" : "70%",
+                height: ismdUp ? "80%" : "50%",
+              }}
+              alt='four boxes'
+            />
+          </div>
+        </Link>
       </Grid2>
       {ismdUp && (
         <Grid2 size={{ xs: 12, sm: 12, md: 12 }} sx={{ marginTop: "6rem" }}>
@@ -88,12 +103,26 @@ export function BoxComponent() {
         </Grid2>
       )}
       <Grid2
-        size={{ xs: 12, sm: 12, md: 12, lg: 12, xl: 12 }}
+        size={{ xs: 12 }}
+        sx={{
+          marginTop: "2rem",
+          marginBottom: "1rem",
+        }}>
+        <Divider
+          sx={{
+            backgroundColor: "#BBC163",
+            height: "4px",
+          }}
+          variant='middle'
+        />
+      </Grid2>
+      <Grid2 size={{ xs: 2 }}></Grid2>
+      <Grid2
+        size={{ xs: 8 }}
         sx={{
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          marginTop: "2rem",
           gap: "1rem",
         }}>
         <WhatsAppIcon
@@ -102,7 +131,7 @@ export function BoxComponent() {
         />
         <InstagramIcon
           sx={{
-            fontSize: "4rem",
+            fontSize: "3.8rem",
             cursor: "pointer",
             background:
               "radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%)",
@@ -112,6 +141,7 @@ export function BoxComponent() {
           href='https://www.instagram.com/weavocaa?igsh=MWFkdGMxMTVkNGt1Ng=='
         />
       </Grid2>
+      <Grid2 size={{ xs: 2 }}></Grid2>
     </Grid2>
   );
 }
