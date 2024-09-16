@@ -11,10 +11,8 @@ export function Component() {
   const ismdUp = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
-    <>
-      <Box>
-        <IntroComponent />
-      </Box>
+    <Box sx={{ marginBottom: "3rem" }}>
+      <IntroComponent />
       <Box sx={{ marginTop: ismdUp ? "1rem" : "2rem" }}>
         <HealthBenefitsComponent landing />
       </Box>
@@ -24,7 +22,7 @@ export function Component() {
       <Box sx={{ marginTop: "5rem" }}>
         <BoxComponent />
       </Box>
-    </>
+    </Box>
   );
 }
 

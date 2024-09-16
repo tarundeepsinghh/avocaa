@@ -1,8 +1,9 @@
 import SpaceDashboardRoundedIcon from "@mui/icons-material/SpaceDashboardRounded";
 import SpaRoundedIcon from "@mui/icons-material/SpaRounded";
-import PublicRoundedIcon from "@mui/icons-material/PublicRounded";
+// import PublicRoundedIcon from "@mui/icons-material/PublicRounded";
 import SoupKitchenRoundedIcon from "@mui/icons-material/SoupKitchenRounded";
 import LocalShippingRoundedIcon from "@mui/icons-material/LocalShippingRounded";
+import InfoRoundedIcon from "@mui/icons-material/InfoRounded";
 
 const NavItems = [
   {
@@ -30,10 +31,10 @@ const NavItems = [
     icon: <LocalShippingRoundedIcon />,
   },
   {
-    label: "internationalServing",
-    title: "International Serving",
-    path: "/international-serving",
-    icon: <PublicRoundedIcon />,
+    label: "aboutUs",
+    title: "About Us",
+    path: "/about-us",
+    icon: <InfoRoundedIcon />,
   },
 ];
 

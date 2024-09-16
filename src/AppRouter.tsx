@@ -40,6 +40,11 @@ function AppRouter() {
       default: module.IntroComponent,
     }))
   );
+  const AboutUsPage = lazy(() =>
+    import("./pages/about-us").then((module) => ({
+      default: module.Component,
+    }))
+  );
   const ComingSoonPage = lazy(() =>
     import("./pages/coming-soon").then((module) => ({
       default: module.ComingSoon,
@@ -170,6 +175,26 @@ function AppRouter() {
                   </Box>
                 }>
                 <InternationalServingPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path='/about-us'
+            element={
+              <Suspense
+                fallback={
+                  <Box
+                    display='flex'
+                    justifyContent='center'
+                    alignItems='center'
+                    style={{ height: "100vh" }}>
+                    <Box textAlign='center'>
+                      <CircularProgress title='progress loader' />
+                      <p>Loading...</p>
+                    </Box>
+                  </Box>
+                }>
+                <AboutUsPage />
               </Suspense>
             }
           />

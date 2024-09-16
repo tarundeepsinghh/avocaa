@@ -1,81 +1,93 @@
-import { SubTitleHeader } from "@/components/TitleHeader";
-import { Divider, Grid2, useMediaQuery, useTheme } from "@mui/material";
-import { useState } from "react";
+import { Box, Grid2, useMediaQuery, useTheme } from "@mui/material";
 import { isRouteErrorResponse, useRouteError } from "react-router-dom";
-import Twoboxes from "../../assets/2.svg";
-import Fourboxes from "../../assets/4.svg";
+import Twoboxes from "../../assets/2.png";
+import Fourboxes from "../../assets/4.png";
+import backgroundCard from "../../assets/bg_box.svg";
+import { PriceComponent } from "./box.component";
+import { list } from "./list";
 
 export function BoxComponent() {
-  const [isHovered1, setIsHovered1] = useState(false);
-  const [isHovered2, setIsHovered2] = useState(false);
   const theme = useTheme();
   const ismdUp = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <Grid2 container spacing={2}>
-      <Grid2 size={{ xs: 12, sm: 12, md: 4, lg: 4, xl: 4 }}>
-        <img
-          src={Twoboxes}
-          onMouseEnter={() => setIsHovered1(true)}
-          onMouseLeave={() => setIsHovered1(false)}
-          alt='two boxes'
-        />
+      <Grid2 size={{ xs: 12, sm: 12, md: 12, lg: 4, xl: 4 }}>
+        <Box
+          sx={{
+            background: `url(${backgroundCard})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}>
+          <img src={Twoboxes} alt='two boxes' />
+        </Box>
       </Grid2>
-      {!ismdUp && (
-        <Grid2 size={{ xs: 0, sm: 0, md: 0, lg: 4, xl: 4 }}>
-          <Grid2 container spacing={2}>
-            <Grid2
-              size={{
-                xs: 0,
-                sm: 0,
-                md: 0,
-                lg: isHovered1 ? 6 : isHovered2 ? 4 : 6,
-                xl: isHovered1 ? 6 : isHovered2 ? 4 : 6,
-              }}
-              onMouseEnter={() => setIsHovered1(true)}
-              onMouseLeave={() => setIsHovered1(false)}>
-              <SubTitleHeader
-                sx={{
-                  textAlign: "center",
-                  fontSize: isHovered1 ? "5em" : isHovered2 ? "3em" : "4em",
-                }}>
-                Box of 2
-              </SubTitleHeader>
-            </Grid2>
-            <Divider orientation='vertical' variant='middle' />
-            <Grid2
-              size={{
-                xs: 0,
-                sm: 0,
-                md: 0,
-                lg: isHovered2 ? 6 : isHovered1 ? 4 : 6,
-                xl: isHovered2 ? 6 : isHovered1 ? 4 : 6,
-              }}
-              onMouseEnter={() => setIsHovered2(true)}
-              onMouseLeave={() => setIsHovered2(false)}>
-              <SubTitleHeader
-                sx={{
-                  textAlign: "center",
-                  fontSize: isHovered2 ? "5em" : isHovered1 ? "3em" : "4em",
-                }}>
-                Box of 4
-              </SubTitleHeader>
-            </Grid2>
-          </Grid2>
+      {ismdUp && (
+        <Grid2 size={{ xs: 12, sm: 12, md: 12 }}>
+          <PriceComponent {...list[0]} />
         </Grid2>
       )}
-      <Grid2 size={{ xs: 12, sm: 12, md: 4, lg: 4, xl: 4 }}>
-        <img
-          src={Fourboxes}
-          onMouseEnter={() => setIsHovered2(true)}
-          onMouseLeave={() => setIsHovered2(false)}
-          alt='four boxes'
-        />
+      <Grid2 size={{ xs: 0, sm: 0, md: 0, lg: 4, xl: 4 }}>
+        {!ismdUp && (
+          <Grid2
+            container
+            spacing={1}
+            sx={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}>
+            {list.map(({ title, discription, price, discounted, link }) => (
+              <Grid2
+                size={{
+                  xs: 0,
+                  sm: 0,
+                  md: 0,
+                  lg: 6,
+                  xl: 6,
+                }}>
+                <PriceComponent
+                  {...{ title, discription, price, discounted, link }}
+                />
+              </Grid2>
+            ))}
+          </Grid2>
+        )}
       </Grid2>
+      <Grid2 size={{ xs: 12, sm: 12, md: 12, lg: 4, xl: 4 }}>
+        <Box
+          sx={{
+            width: "100%",
+            height: ismdUp ? "150%" : "100%",
+            background: `url(${backgroundCard})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}>
+          <img
+            src={Fourboxes}
+            style={{
+              width: ismdUp ? "80%" : "70%",
+              height: ismdUp ? "80%" : "50%",
+            }}
+            alt='four boxes'
+          />
+        </Box>
+      </Grid2>
+      {ismdUp && (
+        <Grid2 size={{ xs: 12, sm: 12, md: 12 }} sx={{ marginTop: "6rem" }}>
+          <PriceComponent {...list[1]} />
+        </Grid2>
+      )}
     </Grid2>
   );
 }
-
 // If you want to customize the component display name in React dev tools:
 BoxComponent.displayName = "BoxesPage";
 
