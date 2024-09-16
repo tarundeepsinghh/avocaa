@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import { DashboardLayout } from "./layout/dashboard";
 import NotFoundPage from "./pages/not-found";
+import LandingSkeleton from "./skeleton/landing.skeleton";
 
 function AppRouter() {
   const LandingPage = lazy(() =>
@@ -45,11 +46,6 @@ function AppRouter() {
       default: module.Component,
     }))
   );
-  const ComingSoonPage = lazy(() =>
-    import("./pages/coming-soon").then((module) => ({
-      default: module.ComingSoon,
-    }))
-  );
   const router = createHashRouter(
     createRoutesFromElements(
       <>
@@ -58,43 +54,11 @@ function AppRouter() {
           element={<Navigate to='/dashboard' replace />}
         />
         <Route path='/' element={<Navigate to='/dashboard' replace />} />
-        <Route
-          path='coming-soon'
-          element={
-            <Suspense
-              fallback={
-                <Box
-                  display='flex'
-                  justifyContent='center'
-                  alignItems='center'
-                  style={{ height: "100vh" }}>
-                  <Box textAlign='center'>
-                    <CircularProgress title='progress loader' />
-                    <p>Loading...</p>
-                  </Box>
-                </Box>
-              }>
-              <ComingSoonPage />
-            </Suspense>
-          }
-        />
         <Route path='/' element={<DashboardLayout />}>
           <Route
             path='dashboard'
             element={
-              <Suspense
-                fallback={
-                  <Box
-                    display='flex'
-                    justifyContent='center'
-                    alignItems='center'
-                    style={{ height: "100vh" }}>
-                    <Box textAlign='center'>
-                      <CircularProgress title='progress loader' />
-                      <p>Loading...</p>
-                    </Box>
-                  </Box>
-                }>
+              <Suspense fallback={<LandingSkeleton />}>
                 <LandingPage />
               </Suspense>
             }

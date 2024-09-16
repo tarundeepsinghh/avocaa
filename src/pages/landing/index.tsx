@@ -1,3 +1,4 @@
+import LandingSkeleton from "@/skeleton/landing.skeleton";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import {
@@ -11,7 +12,6 @@ import {
 import { lazy, Suspense } from "react";
 import { isRouteErrorResponse, Link, useRouteError } from "react-router-dom";
 import designRightDesign from "../../assets/design-left.svg";
-import { IntroComponent } from "../introduction";
 
 export function Component() {
   const theme = useTheme();
@@ -20,6 +20,12 @@ export function Component() {
   const HealthBenefitPage = lazy(() =>
     import("../health").then((module) => ({
       default: module.HealthBenefitsComponent,
+    }))
+  );
+
+  const IntroPage = lazy(() =>
+    import("../introduction").then((module) => ({
+      default: module.IntroComponent,
     }))
   );
 
@@ -37,7 +43,9 @@ export function Component() {
 
   return (
     <Box>
-      <IntroComponent />
+      <Suspense fallback={<LandingSkeleton />}>
+        <IntroPage />
+      </Suspense>
       <Box sx={{ marginTop: ismdUp ? "1rem" : "2rem" }}>
         <Suspense
           fallback={
