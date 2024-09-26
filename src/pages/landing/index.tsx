@@ -6,6 +6,7 @@ import {
   CircularProgress,
   Divider,
   Grid2,
+  Typography,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
@@ -112,15 +113,24 @@ export function Component() {
             variant='middle'
           />
         </Grid2>
-        <Grid2 size={{ xs: 2 }}></Grid2>
         <Grid2
-          size={{ xs: 9.5 }}
+          size={{ xs: 7.5 }}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "flex-end",
+          }}>
+          Copyright © 2024 Avocaa - All Rights Reserved.
+        </Grid2>
+        <Grid2
+          size={{ xs: 4 }}
           sx={{
             display: "flex",
             justifyContent: "flex-end",
-            alignItems: "center",
+            alignItems: "flex-end",
             gap: "1rem",
           }}>
+          <Typography variant='h6'>Connect with us</Typography>
           <Link to='https://wa.me/918130352989'>
             <WhatsAppIcon
               sx={{ color: "#25D366", fontSize: "4rem", cursor: "pointer" }}
