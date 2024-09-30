@@ -103,7 +103,7 @@ export function IntroComponent() {
             </Grid2>
             <Grid2
               size={{ xs: 12, sm: 12, md: 5, lg: 5, xl: 5 }}
-              sx={{ textAlign: "center" }}>
+              sx={{ textAlign: "center", transform: "translate3d(0, 0, 0)" }}>
               <img
                 src={detailedLogoSvg}
                 alt='logo'
@@ -123,7 +123,10 @@ export function IntroComponent() {
           sx={{
             height: "100%",
           }}>
-          <img src={tempSvg} style={{ width: "100%" }} />
+          <img
+            src={tempSvg}
+            style={{ width: "100%", transform: "translate3d(0, 0, 0)" }}
+          />
         </Box>
       )}
     </Box>
