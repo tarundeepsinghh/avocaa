@@ -10,6 +10,7 @@ import toastSvg from "../../assets/toast.svg";
 import tempSvg from "../../assets/1.svg";
 import sushiSvg from "../../assets/sushi.svg";
 
+//intro
 export function IntroComponent() {
   const theme = useTheme();
   const ismdUp = useMediaQuery(theme.breakpoints.down("md"));
