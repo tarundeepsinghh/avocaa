@@ -40,30 +40,24 @@ export function BoxComponent() {
               justifyContent: "center",
               alignItems: "center",
             }}>
-            {list.map(
-              ({ title, discription, price, discounted, link }, index) => (
-                <Grid2
-                  size={{
-                    xs: 0,
-                    sm: 0,
-                    md: 0,
-                    lg: 6,
-                    xl: 6,
-                  }}>
-                  <FadeText
-                    direction={index % 2 === 0 ? "left" : "right"}
-                    framerProps={{
-                      show: { transition: { delay: 0.2 } },
-                    }}
-                    text={
-                      <PriceComponent
-                        {...{ title, discription, price, discounted, link }}
-                      />
-                    }
-                  />
-                </Grid2>
-              )
-            )}
+            {list.map(({ title, discription, link }, index) => (
+              <Grid2
+                size={{
+                  xs: 0,
+                  sm: 0,
+                  md: 0,
+                  lg: 6,
+                  xl: 6,
+                }}>
+                <FadeText
+                  direction={index % 2 === 0 ? "left" : "right"}
+                  framerProps={{
+                    show: { transition: { delay: 0.2 } },
+                  }}
+                  text={<PriceComponent {...{ title, discription, link }} />}
+                />
+              </Grid2>
+            ))}
           </Grid2>
         )}
       </Grid2>

@@ -20,14 +20,10 @@ const BuyNowButton = styled(Button)({
 export function PriceComponent({
   title,
   discription,
-  price,
-  discounted,
   link,
 }: {
   title: string;
   discription: string;
-  price: string;
-  discounted: string;
   link: string;
 }) {
   return (
@@ -46,8 +42,7 @@ export function PriceComponent({
       <BuyNowButton
         disableElevation
         href={`https://wa.me/+918130352989?text=${link}`}>
-        <a style={{ textDecoration: "line-through" }}>₹{price}</a>&nbsp; ₹
-        {discounted}
+        Order Now
       </BuyNowButton>
     </Box>
   );
